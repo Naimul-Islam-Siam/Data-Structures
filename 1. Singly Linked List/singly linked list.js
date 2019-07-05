@@ -26,7 +26,7 @@ class SinglyLinkedList {
             this.tail = this.head;
         } else {
             //otherwise if there is a head already, insert the new node to next to the tail.
-            //update the new tail to new node
+            //set the new node to new tail
             this.tail.next = newNode;
             this.tail = newNode;
         }
@@ -37,4 +37,28 @@ class SinglyLinkedList {
         //return the entire list
         return this;
     }
-};
+
+    pop() {
+        if (!this.head)
+            return undefined;
+
+        let current = this.head;
+        let newTail = current;
+
+        while (current.next) {
+            newTail = current;
+            current = current.next;
+        }
+
+        this.tail = newTail;
+        this.tail.next = null;
+        this.length--;
+
+        if (this.head === this.tail) {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return current;
+    };
+}
