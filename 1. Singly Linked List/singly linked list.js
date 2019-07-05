@@ -15,7 +15,7 @@ class SinglyLinkedList {
         this.length = 0;
     }
 
-    push() {
+    push(val) {
         //create a new node whenever a value is pushed
         const newNode = new Node(val);
 
