@@ -15,6 +15,7 @@ class SinglyLinkedList {
         this.length = 0;
     }
 
+    //insert at the end
     push(val) {
         //create a new node whenever a value is pushed
         const newNode = new Node(val);
@@ -38,6 +39,7 @@ class SinglyLinkedList {
         return this;
     }
 
+    //remove from the end
     pop() {
         if (!this.head)
             return undefined;
@@ -60,5 +62,37 @@ class SinglyLinkedList {
         }
 
         return current;
-    };
+    }
+
+    //remove from the start
+    shift() {
+        if (!this.head)
+            return undefined;
+
+        let currentHead = this.head;
+        this.head = currentHead.next;
+        this.length--;
+
+        if (this.head === this.length) {
+            this.tail = null;
+        }
+
+        return currentHead;
+    }
+
+    //insert at the start
+    unshift(val) {
+        const newNode = new Node(val);
+
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+
+        return this;
+    }
 }
