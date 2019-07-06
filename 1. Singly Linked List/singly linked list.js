@@ -109,6 +109,36 @@ class SinglyLinkedList {
             counter++;
         }
 
-        return current
+        return current;
+    }
+
+    //update the value of a node of a particular index
+    set(index, val) {
+        const foundNode = this.get(index);
+
+        if (foundNode) {
+            foundNode.val = val;
+            return true;
+        }
+
+        return false;
+    }
+
+    //insert a node
+    insert(index, val) {
+        const newNode = new Node(val);
+
+        if (index < 0 || index > this.length) return false;
+        if (index === 0) return !!this.unshift(val); // !! will convert it to boolean
+        if (index === this.length) return !!this.push(val);
+
+        let prev = this.get(index - 1);
+        let temp = prev.next;
+
+        prev.next = newNode;
+        newNode.next = temp;
+        this.length++;
+
+        return true;
     }
 };
