@@ -95,4 +95,20 @@ class SinglyLinkedList {
 
         return this;
     }
-}
+
+    //get the value of a specific index
+    get(index) {
+        let current = this.head;
+        let counter = 0;
+
+        if (!this.head || index < 0 || index >= this.length)
+            return undefined;
+
+        while (counter !== index) {
+            current = current.next;
+            counter++;
+        }
+
+        return current
+    }
+};
