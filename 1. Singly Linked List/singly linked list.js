@@ -15,6 +15,19 @@ class SinglyLinkedList {
         this.length = 0;
     }
 
+    //print the list
+    print() {
+        let list = [];
+        let currentNode = this.head;
+
+        while (currentNode) {
+            list.push(currentNode.val);
+            currentNode = currentNode.next;
+        }
+
+        console.log(list);
+    }
+
     //insert at the end
     push(val) {
         //create a new node whenever a value is pushed
@@ -154,5 +167,26 @@ class SinglyLinkedList {
         this.length--;
 
         return targetNode;
+    }
+
+    //reverse the linked list
+    reverse() {
+        //[100-> 99-> 88-> 77-> 66-> 44]
+        let currentNode = this.head; //100
+        this.head = this.tail; //44
+        this.tail = currentNode; //100
+        //[44, 99, 88, 77, 66, 100]
+        let nextNode;
+        let prevNode = null;
+
+        for (let i = 0; i < this.length; i++) {
+            nextNode = currentNode.next; //99 = 100.next
+            currentNode.next = prevNode; //100.next = null
+
+            prevNode = currentNode; //100
+            currentNode = nextNode; //99
+        }
+
+        return this;
     }
 };
