@@ -95,4 +95,33 @@ class DoublyLinkedList {
 
         return newNode;
     }
+
+    get(index) {
+        if (index < 0 || index >= this.length) {
+            return undefined;
+        }
+
+        let currentNode, counter;
+
+        if (index <= this.length / 2) {
+            currentNode = this.head;
+            counter = 0;
+            while (counter !== index) {
+                currentNode = currentNode.next;
+                counter++
+            }
+        }
+
+        if (index > this.length / 2) {
+            currentNode = this.tail;
+            counter = this.length - 1;
+
+            while (counter !== index) {
+                currentNode = currentNode.prev;
+                counter--;
+            }
+        }
+
+        return currentNode.val;
+    }
 };
