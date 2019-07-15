@@ -1,6 +1,6 @@
 //Linked list implementation
 
-class Node {
+class Item {
     constructor(value) {
         this.value = value;
         this.next = null;
@@ -9,21 +9,21 @@ class Node {
 
 class Stack {
     constructor() {
-        this.first = null;
-        this.last = null;
+        this.top = null;
+        this.bottom = null;
         this.size = 0;
     }
 
     push(value) {
-        const newNode = new Node(value);
+        const newItem = new Item(value);
 
         if (this.size === 0) {
-            this.first = newNode;
-            this.last = newNode;
+            this.top = newItem;
+            this.bottom = newItem;
         } else {
-            let currentFirst = this.first;
-            this.first = newNode;
-            this.first.next = currentFirst;
+            let currentTop = this.top;
+            this.top = newItem;
+            this.top.next = currentTop;
         }
 
         this.size++;
@@ -33,16 +33,16 @@ class Stack {
     pop() {
         if (this.size === 0) return undefined;
 
-        let currentFirst = this.first;
+        let currentTop = this.top;
         if (this.size === 1) {
-            this.first = null;
-            this.last = null;
+            this.top = null;
+            this.bottom = null;
             this.size--;
         } else {
-            this.first = currentFirst.next;
+            this.top = currentTop.next;
             this.size--;
         }
 
-        return currentFirst.value;
+        return currentTop.value;
     }
 };
