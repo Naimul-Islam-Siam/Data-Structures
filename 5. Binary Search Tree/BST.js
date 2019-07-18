@@ -44,6 +44,31 @@ class BinarySearchTree {
             }
         }
     }
+
+    find(value) {
+        if (this.root === null) return undefined;
+
+        let currentNode = this.root;
+        let found = false;
+
+        while (currentNode && !found) {
+            //while something is there to search for and desired value != found
+            if (value < currentNode.value) {
+                currentNode = currentNode.left;
+            } else if (value > currentNode.value) {
+                currentNode = currentNode.right;
+            } else if (value === currentNode.value) {
+                found = true;
+                console.log(`Yes, found ${value} !!!`);
+                return true;
+            }
+        }
+
+        if (found === false) {
+            console.log(`Sorry couldn't find ${value} !`);
+            return false;
+        }
+    }
 };
 
 let tree = new BinarySearchTree();
