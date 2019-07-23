@@ -1,9 +1,14 @@
 class MinBinaryHeap {
     constructor() {
-        this.heapElements = [];
+        this.heapElements = [3, 5, 9, 6, 8, 20, 10, 12, 18, 9];
     }
 
     insert(element) {
+        this.heapElements.push(element);
+        this.bubbleUp();
+    }
+
+    bubbleUp() {
         let index = this.heapElements.length - 1;
         let element = this.heapElements[index];
 
@@ -23,3 +28,7 @@ class MinBinaryHeap {
         console.log(this);
     }
 };
+
+let heap = new MinBinaryHeap();
+heap.insert(1);
+heap.print();
