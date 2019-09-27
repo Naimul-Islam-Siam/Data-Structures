@@ -45,4 +45,36 @@ class HashTable {
         if (!this.keyMap[index])
             return undefined;
     }
+
+    //get all the keys (without duplicate entries) of the hash table
+    keys() {
+        let keysArray = [];
+
+        for (let i = 0; i < this.keyMap.length; i++) {
+            if (this.keyMap[i]) { // if i-th index is not empty
+                for (let j = 0; j < this.keyMap[i].length; j++) { // iterate over nested array
+                    if (!keysArray.includes(this.keyMap[i][j][0])) //avoides duplicacy
+                        keysArray.push(this.keyMap[i][j][0]); // 0th index inside nested array represents key
+                }
+            }
+        }
+
+        return keysArray;
+    }
+
+    // get all the values (without duplicate entries) of the hash table
+    values() {
+        let valuesArray = [];
+
+        for (let i = 0; i < this.keyMap.length; i++) {
+            if (this.keyMap[i]) { // if i-th index is not empty
+                for (let j = 0; j < this.keyMap[i].length; j++) { // iterate over nested array
+                    if (!valuesArray.includes(this.keyMap[i][j][1])) //avoides duplicacy
+                        valuesArray.push(this.keyMap[i][j][1]); // 1st index inside nested array represents value
+                }
+            }
+        }
+
+        return valuesArray;
+    }
 };
