@@ -68,8 +68,9 @@ class Graph {
 
             visited[vertex] = true;
             result.push(vertex);
-            this.adjacencyList[vertex].forEach(neighbour => {
-                if (visited[neighbour] == false) {
+            this.adjacencyList[vertex].forEach(neighbour => { // this.adjacencyList is working as dfs is an arrow function
+                // if it was a normal function it wouldn't work this way
+                if (!visited[neighbour]) {
                     return dfs(neighbour);
                 }
             });

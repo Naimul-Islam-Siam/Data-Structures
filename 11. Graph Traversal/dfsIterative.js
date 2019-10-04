@@ -57,6 +57,28 @@ class Graph {
         if (this.adjacencyList[vertex1].indexOf(vertex2) !== -1) return true;
         else return false;
     }
-}
 
-export default Graph;
+    //traverse graph using dfs iterative approach
+    dfsIterative(startVertex) {
+        let result = []; // traversed vertices will be stored
+        let visited = {};
+        let stack = [startVertex];
+
+        let currentVertex;
+        visited[startVertex] = true;
+
+        while (stack.length > 0) {
+            currentVertex = stack.pop();
+            result.push(currentVertex);
+
+            this.adjacencyList[startVertex].forEach(neighbour => {
+                if (!visited[neighbour]) {
+                    stack.push(neighbour);
+                    visited[neighbour] = true;
+                }
+            });
+        }
+
+        return result;
+    }
+}
